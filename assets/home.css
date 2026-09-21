@@ -1,0 +1,286 @@
+/* ===== ASSEMBLE / AVENGERS THEME — hub / listing pages ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  --blue: #1b3a75;
+  --blue2: #3d7dff;
+  --red: #c8102e;
+  --red2: #ff3b3b;
+  --gold: #f2c94c;
+  --dark: #05070d;
+  --panel: #0d1420;
+  --line: #17233d;
+  --steel: #b9c4d6;
+}
+
+body.hub {
+  min-height: 100vh;
+  font:
+    16px/1.6 "Segoe UI",
+    system-ui,
+    sans-serif;
+  color: #f2f2f2;
+  background:
+    radial-gradient(
+      ellipse 900px 600px at 15% -10%,
+      #0a2a5e 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 900px 700px at 110% 10%,
+      #5c0008 0%,
+      transparent 55%
+    ),
+    var(--dark);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* decorative corner shield rings — original artwork, not any trademarked logo */
+body.hub::before,
+body.hub::after {
+  content: "";
+  position: fixed;
+  width: 640px;
+  height: 640px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='white' stroke-opacity='0.07' stroke-width='1'><circle cx='100' cy='100' r='20'/><circle cx='100' cy='100' r='42'/><circle cx='100' cy='100' r='66'/><circle cx='100' cy='100' r='92'/><circle cx='100' cy='100' r='118'/><path d='M100 10 L112 70 L172 70 L122 106 L142 166 L100 128 L58 166 L78 106 L28 70 L88 70 Z'/></g></svg>");
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0.9;
+  pointer-events: none;
+}
+body.hub::before {
+  top: -220px;
+  left: -220px;
+}
+body.hub::after {
+  bottom: -260px;
+  right: -260px;
+  transform: scaleX(-1);
+}
+
+main {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 52px;
+  position: relative;
+}
+.hero small {
+  letter-spacing: 6px;
+  color: var(--blue2);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.hero h1 {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 6.4vw, 4.6rem);
+  line-height: 1.05;
+  margin: 16px 0;
+  letter-spacing: 1px;
+  color: #fff;
+  -webkit-text-stroke: 1.5px #061a3f;
+  text-shadow:
+    0 0 12px #3d7dff99,
+    0 4px 0 #0a2a5e,
+    0 8px 24px #00000090;
+}
+.hero p {
+  opacity: 0.75;
+  color: #cfd8ea;
+}
+
+/* star-shield emblem — original artwork, not any trademarked logo */
+.hero::before {
+  content: "";
+  display: block;
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 40%, #0d1c3d 0%, #04091a 70%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='14' fill='none' stroke='%23f2c94c' stroke-width='3'/><path d='M50 12 L58 38 L86 38 L63 54 L71 80 L50 64 L29 80 L37 54 L14 38 L42 38 Z' fill='%23f2c94c' stroke='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:
+    60% 60%,
+    60% 60%;
+  border: 2px solid var(--blue2);
+  box-shadow:
+    0 0 0 4px #0a1730,
+    0 0 30px #3d7dff88;
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 34px;
+}
+.stats span {
+  padding: 8px 18px;
+  border-radius: 6px;
+  background: #0b1424;
+  border: 1px solid #1c2f52;
+  font-size: 14px;
+  clip-path: polygon(
+    8px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    0 100%,
+    0 8px
+  );
+}
+.stats b {
+  color: var(--gold);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+}
+.card {
+  --c: #3d7dff;
+  padding: 34px;
+  background: linear-gradient(160deg, #0e1524, #080b12);
+  border: 1px solid #1a2c4d;
+  position: relative;
+  transition: 0.3s;
+  clip-path: polygon(
+    18px 0,
+    100% 0,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    0 100%,
+    0 18px
+  );
+}
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(160deg, transparent 60%, #3d7dff22);
+}
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--c);
+  box-shadow:
+    0 25px 60px #000c,
+    0 0 45px var(--c);
+}
+.ic {
+  font-size: 40px;
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+  color: #fff;
+  background: radial-gradient(circle at 35% 30%, var(--c), #0a1730 75%);
+  clip-path: polygon(
+    15% 0,
+    85% 0,
+    100% 15%,
+    100% 85%,
+    85% 100%,
+    15% 100%,
+    0 85%,
+    0 15%
+  );
+  box-shadow: 0 0 20px var(--c);
+}
+.card h2 {
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.card p {
+  opacity: 0.75;
+  margin-bottom: 26px;
+  color: #ccd6ea;
+}
+
+.go {
+  display: inline-block;
+  padding: 12px 28px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--blue), var(--red));
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  transition: 0.25s;
+  box-shadow: 0 0 0 1px #3d7dff55 inset;
+}
+.go:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 25px var(--gold);
+}
+
+footer {
+  text-align: center;
+  margin-top: 56px;
+  opacity: 0.55;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.list h2 {
+  margin: 34px 0 12px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.list ol {
+  display: grid;
+  gap: 9px;
+  padding-left: 0;
+  list-style: none;
+}
+.list li a {
+  display: block;
+  padding: 12px 18px;
+  background: #0b0f18;
+  border: 1px solid #182642;
+  color: #f2f2f2;
+  text-decoration: none;
+  transition: 0.2s;
+  position: relative;
+  border-left: 3px solid var(--blue2);
+}
+.list li a:hover {
+  background: #0f1c33;
+  transform: translateX(8px);
+  box-shadow: 0 0 20px #3d7dff55;
+}
+.top {
+  margin-bottom: 30px;
+}
+
+pre.code {
+  background: #0009;
+  padding: 18px;
+  border-radius: 6px;
+  overflow: auto;
+  line-height: 1.5;
+  margin-top: 16px;
+  font-size: 14px;
+  border: 1px solid #182642;
+}
